@@ -1,3 +1,4 @@
+//check if multiple numbers are prime or not
 #include <bits/stdc++.h>
 using namespace std;
 #define ll  long long int
