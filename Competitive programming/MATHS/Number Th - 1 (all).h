@@ -1,4 +1,4 @@
-*Power*
+// NAIVE POWER.....................................................................................................................
 int recursivePower(int x,int n)
 {
     if(n==0)
@@ -16,7 +16,7 @@ int iterativePower(int x,int n)
     }
     return result;
 }
-
+// BINARY EXPONENTIATION.............................................................................................................
 int binaryExponentiation(int x,int n)
 {
     if(n==0)
@@ -39,7 +39,7 @@ int binaryExponentiation(int x,int n)
     }
     return result;
 }
-
+// MODULAR EXPONENTIATION ......................................................................................................
 int modularExponentiation(int x,int n,int M)
 {
     if(n==0)
@@ -64,6 +64,7 @@ int modularExponentiation(int x,int n,int M)
     return result;
 }
 
+//NAIVE GCD .......................................................................................................................
 int GCD(int A, int B) {
     int m = min(A, B), gcd;
     for(int i = m; i > 0; --i)
@@ -73,6 +74,7 @@ int GCD(int A, int B) {
         }
 }
 
+//EUCLID'S GCD .......................................................................................................................
 int GCD(int A, int B) {
     if(B==0)
         return A;
@@ -80,6 +82,7 @@ int GCD(int A, int B) {
         return GCD(B, A % B);
 }
 
+//EXTENDED EUCLIDS ALGO .......................................................................................................................
 #include < iostream >
 
 int d, x, y;
@@ -103,15 +106,31 @@ cout << ”The GCD of 16 and 10 is ” << d << endl;
 cout << ”Coefficients x and y are ”<< x <<  “and  “ << y << endl;
 return 0;   
 }
+//NAIVE  MODULAR MULTILICATIVE INVERSE .......................................................................................................................
 
+int modInverse(int A,int M)
+{
+    A=A%M;
+    for(int B=1;B<M;B++)
+        if((A*B)%M)==1)
+            return B;
+}
+//MODULAR MULTILICATIVE INVERSE USING EXTENDED EUCLIDS ALGO.......................................................................................................................
+int d,x,y;
+int modInverse(int A, int M)
+{
+    extendedEuclid(A,M);
+    return (x%M+M)%M;    //x may be negative
+}
+Time complexity:
+O(log(max(A,M)))
 
-
-
-
-
-
-
-
+//MODULAR MULTILICATIVE INVERSE( using fermat's littlr theorem)...............................................................................................................
+// applies only when m is prime
+int modInverse(int A,int M)
+{
+    return modularExponentiation(A,M-2,M);
+}
 
 
 
