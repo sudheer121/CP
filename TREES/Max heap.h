@@ -24,24 +24,38 @@ void max_heapify(int a[],int index,int N)
         max_heapify(a,largest,N);
     }
 }// Complexity : O(log(N))
-void build_maxheap(int a[],int N)
-{
-    for(int i=N/2;i>=1;i--)
+void build_maxheap(int a[],int n)
+{   
+    for(int i=1;i<=n;i++) { cin>>a[i]; }
+    for(int i=n/2;i>=1;i--)
     {
-        max_heapify(a,i,N);
+        max_heapify(a,i,n);
     }
-}// Complexity : O(N)
-
+}
+// Complexity : O(N)
 // Overall complexity appears : NlogN
 // But actually is : O(N) in worst case. Proof :http://www.cs.umd.edu/~meesh/351/mount/lectures/lect14-heapsort-analysis-part.pdf
 // Concept : https://www.hackerearth.com/fr/practice/data-structures/trees/heapspriority-queues/tutorial/
 
+void heap_sort(int a[],int n)
+{   int heapsize = n;
+    build_maxheap(a,n);
+    for(int i=n;i>=2;i--)
+    {
+        swap(a[1],a[i]);
+        heapsize = heapsize - 1;
+        max_heapify(a,1,heapsize);
+    }
+}// complexity : O(Nlog(N))
+
 int main()
 { 
 int n,a[100];
-cout<<"Enter array size\n";cin>>n;
-for(int i=1;i<=n;i++) { cin>>a[i]; }
-build_maxheap(a,n);
+//cout<<"\nEnter array size\n";cin>>n;
+//build_maxheap(a,n);
+//for(int i=1;i<=n;i++) { cout<<a[i]<<" "; }
+cout<<"\nEnter array size\n";cin>>n;
+heap_sort(a,n);
 for(int i=1;i<=n;i++) { cout<<a[i]<<" "; }
 }
 
