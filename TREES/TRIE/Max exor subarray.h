@@ -1,4 +1,6 @@
 //Max exor subarray 
+//https://www.quora.com/q/threadsiiithyderabad/Tutorial-on-Trie-and-example-problems
+//https://www.hackerearth.com/practice/data-structures/advanced-data-structures/trie-keyword-tree/practice-problems/algorithm/substring-xor-bc997d8a/
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long
