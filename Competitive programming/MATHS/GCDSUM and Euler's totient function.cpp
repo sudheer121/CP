@@ -7,6 +7,7 @@ https://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/
 https://www.geeksforgeeks.org/prime-factorization-using-sieve-olog-n-multiple-queries/
 https://www.geeksforgeeks.org/least-prime-factor-of-numbers-till-n/
 https://www.geeksforgeeks.org/eulers-totient-function/ 
+**https://en.wikipedia.org/wiki/Pillai%27s_arithmetical_function
 **https://www.quora.com/How-can-I-solve-the-problem-GCD-Extreme-GCDEX-on-SPOJ
 ***https://www.geeksforgeeks.org/summation-gcd-pairs-n/
 ***https://codeforces.com/blog/entry/7308
