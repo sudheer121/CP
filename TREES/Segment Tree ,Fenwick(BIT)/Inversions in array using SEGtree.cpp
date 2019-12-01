@@ -62,7 +62,7 @@ for(int i=0;i<n;i++)
 for(int i=n;i>0;i--) //start reading from end and update the cooresponding element
 {   if(a[i]!=1)
     { x = query(1,1,n,1,a[i]-1); }//gives the number of numbers less than a[i]
-    for(int i=1;i<2*n;i++) {cout<<tree[i]<<" "; } 
+    cout<<a[i]<<endl;
     update(1,1,n,a[i]);
     inv_count += x;
     
