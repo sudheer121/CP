@@ -20,3 +20,26 @@ cout<<sum<<endl;
 }
 return 0;
 }
+//prob2
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+int t,n,a[3];
+ll x,ans;
+int main()
+{
+cin>>t;
+while(t--)
+{
+cin>>n;a[0]=0;a[2]=0;ans=0;
+for(int i=0;i<n;i++)
+{
+  cin>>x;
+  if(x==0) { a[0]++; }
+  if(x==2) { a[2]++; }
+}  
+ans = (a[0]*(a[0]-1))/2 + (a[2]*(a[2]-1))/2;
+cout<<ans<<endl;
+}  
+  return 0;
+}
