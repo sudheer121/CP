@@ -82,4 +82,31 @@ cout<<lcpfunc(s.size())<<endl;
 }
 return 0;}
 
+//qn 6
+#include<bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define f first
+#define s second
+const int maxn = 1e5+10;
+int t,n,x,y;
+int arr[maxn][2];
 
+map<int,int> lrmap,rlmap;
+set<int> s;
+
+int main()
+{
+cin>>t;
+while(t--)
+{ lrmap.clear();rlmap.clear();s.clear();
+cin>>n;
+for(int i=0;i<n;i++)
+{
+cin>>arr[i][0]>>arr[i][1];
+}//O(1)
+for(int i=0;i<n;i++) {s.insert(arr[i][0]);}//nlogn
+
+
+}
+return 0;}
