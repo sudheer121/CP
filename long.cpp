@@ -85,28 +85,69 @@ return 0;}
 //qn 6
 #include<bits/stdc++.h>
 using namespace std;
+#define ll long long
 #define pb push_back
 #define f first
 #define s second
 const int maxn = 1e5+10;
-int t,n,x,y;
-int arr[maxn][2];
-
-map<int,int> lrmap,rlmap;
-set<int> s;
-
+int n;
+ll t,x,y,tp;
+ll arr[maxn][2];
+map<ll,ll> l,r,m;
+set<ll> s;
+vector<ll> v,idx;
 int main()
 {
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);cout.tie(NULL);    
 cin>>t;
 while(t--)
-{ lrmap.clear();rlmap.clear();s.clear();
+{ l.clear();r.clear();s.clear();v.clear();m.clear();idx.clear();
+tp=0;
 cin>>n;
+for(int i=0;i<n;i++){cin>>arr[i][0]>>arr[i][1];}
 for(int i=0;i<n;i++)
 {
-cin>>arr[i][0]>>arr[i][1];
-}//O(1)
-for(int i=0;i<n;i++) {s.insert(arr[i][0]);}//nlogn
+s.insert(arr[i][0]);s.insert(arr[i][1]);
+if(arr[i][0]==arr[i][1]){m[arr[i][0]]++;continue;}
+l[arr[i][0]]++;  r[arr[i][1]]++;
+}
 
+v.pb(0);
+for(auto it=s.begin();it!=s.end();it++)
+{ 
+ 
+if(m[*it]!=0){ 
+  int x = v[v.size()-1];
+  v.pb(x+l[*it]-r[*it]+m[*it]);
+  v.push_back(x+l[*it]-r[*it]); }
+else
+{ v.pb(v[v.size()-1]+l[*it]-r[*it]);}
+
+
+if(l[*it]>0 && r[*it]>0){++tp;}
+else { tp=0; }  
+if(tp>1){ if(m[*it]==0) { idx.pb(v.size()-2); }
+          else idx.pb(v.size()-3);
+        } 
 
 }
+for(int i=0;i<idx.size();i++){cout<<idx[i]<<" k ";} 
+//v.erase(v.begin());
+//v.erase(v.begin()+v.size()-1);
+int min = 100100;//tp = touch point
+for(int i=0;i<v.size();i++){cout<<v[i]<<" ";}cout<<endl;
+for(int i=1;i<v.size()-1;i++)
+{
+if(v[i-1]>=v[i] && v[i]<=v[i+1] && v[i]<min){min=v[i];}
+else if(binary_search(idx.begin(),idx.end(),i)){min = v[i];}
+}
+
+if(min == 100100){cout<<-1<<endl;}
+else
+{cout<<min<<endl;
+}
+
+}
+
 return 0;}
