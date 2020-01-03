@@ -1,0 +1,57 @@
+//https://cp-algorithms.com/graph/depth-first-search.html
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pb push_back
+#define mem(v) memset(v,0,sizeof(v)*sizeof(v[0]))
+const int mxn = 1e5 + 10;
+
+bool  vis[mxn] = {0};
+vector<int> adj[mxn];    // adjacency list
+int arr[mxn];
+void dfs(int v)
+{
+  vis[v] = true;
+  for(int u:adj[v])
+  {
+    if(!vis[u])
+    {
+      dfs(u);
+    }
+  }
+}
+
+int n,q,x,y;
+string s;
+int cnt[25];
+int main()
+{
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);cout.tie(NULL);   
+
+cin>>n>>q;
+for(int i=1;i<=n;i++)
+{ char c;
+  cin>>c;
+  arr[i]=c-'a';
+}
+for(int i=1;i<n;i++)
+{
+  cin>>x>>y;
+  adj[x].pb(y);
+  adj[y].pb(x);
+}
+
+for(int i=0;i<q;i++)
+{
+cin>>x>>s;
+for(int i=0;i<26;i++){mem(cnt);}
+for(int i=0;i<s.size();i++){ cnt[s[i]-'a']++;}
+
+}
+  return 0;
+}
+
+
+
