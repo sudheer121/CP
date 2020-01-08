@@ -1,0 +1,59 @@
+//https://www.hackerearth.com/practice/algorithms/graphs/articulation-points-and-bridges/tutorial/
+//https://www.quora.com/q/lbsknuilzujwaqtg/Cut-Vertex-Articulation-point
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pb push_back
+#define mem(v) memset(v,0,sizeof(v)*sizeof(v[0]))
+const int mxn = 1e5 + 10;
+
+int n,m,p;//n vertices m edges
+
+bool  vis[mxn] = {0};
+bool AP[mxn] = {false};//Ap[i] means i is articulation point  
+vector<int> adj[mxn];    // adjacency list
+int disc[mxn]; //discovery time/number
+int low[mxn]; //minumum disc value connected;
+
+void dfs(int v)
+{ static int c = 0; 
+  vis[v] = true;
+  disc[v] = low[v] = c++;
+  for(int u:adj[v])
+  {
+    if(!vis[u])
+    {
+      dfs(u);
+      low[v] = min(low[u],low[v]); //parent changes value wrt child 
+      if (low[u]>=disc[v])
+         {AP[v]=true;
+//if low[] of child>= discovery time of parent then parent is a.p    // because if child has lesser low[] it means it's connected to an 
+// ancestor of parent.    
+         }
+    }
+    else 
+    {
+     low[v] = min(low[u],low[v]);
+    }
+  }
+}
+int x,y;
+int main()
+{
+//ios_base::sync_with_stdio(false);
+//cin.tie(NULL);cout.tie(NULL);  
+cin>>n>>m; 
+for(int i=1;i<=m;i++)
+{
+  cin>>x>>y;
+  adj[x].pb(y);
+  adj[y].pb(x);
+}
+dfs(1);
+if(adj[1].size()>1) {AP[1] = true; }// case root
+for(int i=1;i<=n;i++)
+{
+  if(AP[i]==1){ cout<<i<<" ";}
+}
+return 0;
+}
