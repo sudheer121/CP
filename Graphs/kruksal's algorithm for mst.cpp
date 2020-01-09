@@ -27,14 +27,15 @@ void union1(int x, int y)
 }
 
 ll kruksal(pair <ll, pair<int, int> > p[])
-{  ll x,y,wt,mincost;
+{  ll x,y,wt,mincost=0;
   for(int i=0;i<m;i++)//iterate over edge in asc order
   {
      x = p[i].second.first;
      y = p[i].second.second;
      wt = p[i].first;
+
      if(root(x)!=root(y)) //check if disconnected
-     {
+     { 
        mincost+=wt;
        union1(x,y);
      }
@@ -43,6 +44,7 @@ return mincost;
 }
 int main()
 {
+initialize(); // very very important
 cin>>n>>m; int u,v; ll edge;
 for(int i=0;i<m;i++)
 {
@@ -50,7 +52,7 @@ cin>>u>>v>>edge;
 p[i] = make_pair( edge, make_pair(u,v) );
 }
 sort(p,p+m);
-int mincost = kruksal(p);
+ll mincost = kruksal(p);
 cout<<mincost<<endl;
 return 0;
 }
