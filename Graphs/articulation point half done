@@ -14,22 +14,29 @@ bool AP[mxn] = {false};//Ap[i] means i is articulation point
 vector<int> adj[mxn];    // adjacency list
 int disc[mxn]; //discovery time/number
 int low[mxn]; //minumum disc value connected;
+int child[mxn];//dfs tree child count(used for root)
+int parent[mxn]={-1}; //
 
 void dfs(int v)
 { static int c = 0; 
   vis[v] = true;
   disc[v] = low[v] = c++;
+  child[v] = 0; 
   for(int u:adj[v])
   {
     if(!vis[u])
-    {
+    { child[v]++;
+      parent[u] = v;
       dfs(u);
-      low[v] = min(low[u],low[v]); //parent changes value wrt child 
-      if (low[u]>=disc[v])
-         {AP[v]=true;
-//if low[] of child>= discovery time of parent then parent is a.p    // because if child has lesser low[] it means it's connected to an 
-// ancestor of parent.    
-         }
+      low[v] = min(low[u],low[v]); //parent's low changes value wrt child 
+      if(parent[v]==-1 && child[v]>1)//i.e root
+      {
+        AP[v]=true;
+      }
+      if (parent[v]!=-1 && low[u]>=disc[v])
+      {
+        AP[v]=true;
+      }
     }
     else 
     {
