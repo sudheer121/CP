@@ -57,7 +57,7 @@ for(int i=1;i<=m;i++)
   adj[y].pb(x);
 }
 dfs(1);
-if(adj[1].size()>1) {AP[1] = true; }// case root
+
 for(int i=1;i<=n;i++)
 {
   if(AP[i]==1){ cout<<i<<" ";}
