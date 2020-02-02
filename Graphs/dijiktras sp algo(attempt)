@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define ll long long
+#define mp make_pair
+const int maxn = 1e5+10;
+pair <ll, pair<int, int> > p[maxn];
+vector<pair<int,int>> v[maxn];
+int n,m,x,y,z;
+bool vis[maxn] = {0};
+int dis[maxn] = {0};
+void sp(int src,int dest)
+{ 
+  queue<int> q;
+  q.push(src);
+  dis[src]=0;
+  while(!q.empty())
+
+  {
+    int m = q.front() ; q.pop() ;vis[m] = 1;
+    cout<<m<<endl;
+    for(pair<int,int> pr :v[m])
+    {
+      if(!vis[pr.first])
+      {
+    q.push(pr.first);
+    //cout<<pr.first<<" "<<dis[pr.first]<<" "<<pr.second<<endl;
+    
+    if(dis[pr.first]==0) 
+    { dis[pr.first]=dis[m]+pr.second; }
+    else
+    {
+    dis[pr.first]=min(dis[pr.first],dis[m]+pr.second);
+    }
+      }
+    }
+  }
+}
+int main()
+{
+  cin>>n>>m;
+  for(int i=0;i<m;i++)
+  {
+  cin>>x>>y>>z;
+  v[x].pb(mp(y,z));
+  v[y].pb(mp(x,z));
+  }
+  cin>>x>>y;
+  sp(x,y);
+  for(int i=1;i<=n;i++) { cout<<dis[i]<<" "; }
+  return 0;
+}
