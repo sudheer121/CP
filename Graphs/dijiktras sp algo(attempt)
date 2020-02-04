@@ -3,19 +3,20 @@ using namespace std;
 #define pb push_back
 #define ll long long
 #define mp make_pair
+const int INF = 1e7;
 const int maxn = 1e5+10;
-pair <ll, pair<int, int> > p[maxn];
+pair <int, pair<int, int> > p[maxn];
 vector<pair<int,int>> v[maxn];
 int n,m,x,y,z;
 bool vis[maxn] = {0};
-int dis[maxn] = {0};
+int dis[maxn] = {INF};
 void sp(int src,int dest)
-{ 
+{ for(int i=0;i<=n;i++){dis[i]=1e7;}
+  
   queue<int> q;
   q.push(src);
   dis[src]=0;
   while(!q.empty())
-
   {
     int m = q.front() ; q.pop() ;vis[m] = 1;
     cout<<m<<endl;
@@ -24,18 +25,13 @@ void sp(int src,int dest)
       if(!vis[pr.first])
       {
     q.push(pr.first);
-    //cout<<pr.first<<" "<<dis[pr.first]<<" "<<pr.second<<endl;
-    
-    if(dis[pr.first]==0) 
-    { dis[pr.first]=dis[m]+pr.second; }
-    else
-    {
-    dis[pr.first]=min(dis[pr.first],dis[m]+pr.second);
-    }
       }
+    cout<<m<<" "<<dis[m]<<endl;
+    dis[pr.first]=min(dis[pr.first],dis[m]+pr.second);
     }
   }
 }
+
 int main()
 {
   cin>>n>>m;
