@@ -1,0 +1,43 @@
+//Bellman ford on directed  weighted graphs
+#include <bits/stdc++.h>
+using namespace std;
+const int maxn = 1e3 + 20;
+const long long int INF = 1e10 ;
+int m,n,v;
+struct edge
+{
+    int a, b, cost;
+};
+vector<int> d(n,INF);//d[x] = dist of vertex labelled x 
+vector<int> p(n-1)// path from prev vertex
+
+void solve()
+{
+
+d[v]=0;
+for(int i=1;i<n;i++)//N-1 phases at max
+{ bool any = false;
+  for(int j=0;j<m;j++)
+  {
+    //if(d[ed[j].a]<INF)
+    {
+    d[ed[j].b] = min(d[ed[j].b],d[ed[j].a]+ed[j].cost)
+    p[e[j].b] = e[j].a;
+    any = true;
+    }
+  }
+  if(!any){ break; } //small optimization 
+}
+}
+
+int main()
+{
+cin>>m>>n;
+edge ed[maxn];
+for(int i=0;i<m;i++)
+{
+cin>>ed.a>>ed.b>>ed.cost
+}
+cin>>v; //source
+return 0; 
+}
