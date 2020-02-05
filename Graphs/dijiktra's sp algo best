@@ -1,0 +1,62 @@
+//Dijiktra's algorithm 
+#include<bits/stdc++.h>
+using namespace std;
+#define pb push_back
+const int maxn = 1e5 + 10;
+const int inf  = 1e9 + 10;
+struct edge
+{
+  int to;
+  int wt;
+};
+int m,n,src;
+vector<edge> adj[maxn];
+bool vis[maxn] = {0};
+int  dis[maxn] = {inf};
+int  prnt[maxn] = {-1};
+void dijikstra(int src)
+{
+for(int i=1;i<=n;i++) { dis[i] = inf; }
+set<pair<int,int>> pq;//priority queue <distance,dest vertex>
+dis[src] = 0;
+pq.insert({0,src});
+
+while(!pq.empty())
+{ /*burn the closest edge*/
+  pair<int,int> p = *pq.begin();
+  int v = p.second;
+  vis[v] = 1;
+  pq.erase(pq.begin());
+  
+  for( auto ed:adj[v] )
+  {
+  if(dis[ed.to] > dis[v]+ed.wt)
+  { /* update neighbours of burnt vertex */
+    pq.erase({dis[ed.to],ed.to});
+    dis[ed.to] = dis[v]+ed.wt;
+    prnt[ed.to] = v;
+    pq.insert({dis[ed.to],ed.to});
+  }
+
+  }
+}
+
+}
+
+int main()
+{ int x,y,weight;
+  cin>>n>>m;
+  for(int i=0;i<m;i++)
+  { 
+  cin>>x>>y>>weight;
+  edge ed; 
+  ed.to = y; ed.wt = weight;
+  adj[x].pb(ed);
+  ed.to = x;
+  adj[y].pb(ed);
+  }
+  cin>>src;
+  dijikstra(src);
+  for(int i=1;i<=n;i++){ cout<<dis[i]<<endl;}
+  return 0;
+}
