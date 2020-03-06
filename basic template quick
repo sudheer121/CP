@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #define ll long long int
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 #define inp(a) for(int i=0;i<n;i++) { cin>>a[i]; }
 using namespace std;
 #define mod  1e9+7
@@ -9,8 +10,7 @@ ll arr[maxn];
 
 int main()
 { 
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);cout.tie(NULL);    
+fastio;
 return 0;
 }
 
