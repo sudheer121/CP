@@ -12,6 +12,7 @@ You may assume that you have infinite number of each kind of coin.
 
 Here dp[i][j] = no of ways to make i from all coins with index<=j
 Hence from dp[i][j] we can go to dp[i+coins[x]][x] where j<=x<=K-1 (K is the size of coins array)
+Or we have reached dp[i][j] from dp[i-coins[x]][x] where 0<=x<=j
 */
 class Solution {
 public:
