@@ -6,7 +6,7 @@ using namespace std;
 #define mod  1e9+7
 const int maxn = 1e5 + 100;
 int n;
-ll arr[maxn];
+int a[maxn];
 
 int main()
 { 
