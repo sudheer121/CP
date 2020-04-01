@@ -23,6 +23,8 @@ for(int i=2;i<n;i++)
 
 //===================================================================================================================================  
 //O(NlogN) solution
+//let's have another array v[], v is pretty special
+//v[i] means: the minimum value of the last element of the longest increasing sequence whose length is i.
 void bsrch(vector<int> v,int x)
 {
   int l = 0;
