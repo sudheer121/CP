@@ -1,7 +1,12 @@
 #include<bits/stdc++.h>
 #define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mp make_pair
+
 #define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-#define inp(a) for(int i=0;i<n;i++) { cin>>a[i]; }
+#define mem(x,y) for(int i=0;i<x.size()i++){ x[i]=y; }
 using namespace std;
 #define mod  1e9+7
 const int maxn = 1e5 + 100;
@@ -9,9 +14,8 @@ int n;
 int a[maxn];
 
 int main()
-{ 
+{
 fastio;
+
 return 0;
 }
-
-
