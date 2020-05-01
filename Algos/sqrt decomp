@@ -1,0 +1,51 @@
+//SQRT decomp
+#include <bits/stdc++.h>
+using namespace std; 
+#define maxn 100500
+#define vi vector<int>  
+int n,a[maxn];
+
+int len;
+vector<int> b; 
+void preprocess()
+{
+len = (int) sqrt (n + .0) + 1; //choose upper perfect square
+b.resize(len);
+for (int i=0; i<n; ++i)
+{
+  b[i / len] += a[i];
+}
+}
+
+int query(int l,int r)
+{
+int sum = 0; 
+
+for(int i=l;i<=r;)
+{
+  if(i%len==0 && i + len - 1 <= r)
+  {
+    sum += b[i / len];
+    i += len;
+  }
+  else
+  {
+    sum += a[i];
+    ++i;
+  }
+}
+return sum;
+}
+
+void update(int i,int val)
+{
+  b[i/len] += val - a[i];
+  a[i] = a[val];
+}
+/*
+sqrt decomp takes O(1) while updating in range sum 
+while it takes O(sqrt(n)) while updating in range max/min
+*/
+int main() {
+cin>>n ;
+}
