@@ -1,4 +1,4 @@
-// Kadane's algo / Maximum subarray sum.
+// Kadane's algo / Maximum subarray sum all O(N) approaches explained.
 // Kadane's algo assumes there is at least one positive element in array
 /*
 This solution requires extra space of O(N)
@@ -58,4 +58,43 @@ if(maxcurrent>maxglobal) {  maxglobal = maxcurrent; }
 }
 return maxglobal;
 }
+/*
+Remember we have at least one +ve element in array.---------------------(call this Line X )
+We said,
+if (a[i] > max_ending_here + a[i]):
+    max_ending_here = a[i] 
+else:
+    max_ending_here = a[i] + max_ending_here
 
+Hence our ans is +ve for sure,or at least zero.
+So at any point if we get max_ending_here as -ve, why not just discard it and make it zero as it will surely decrease incoming values.
+So we now say max_ending_here is either +ve or zero (because of Line X and previous line).
+
+If max_ending_here + a[i] < 0 then max_ending_here is -ve for sure because a[i] is also negative.
+
+So lets write,
+if(max_ending_here + a[i] < 0):
+    max_ending_here = 0        --------------->// because no point in storing -ve values.
+else
+    max_ending_here = max_ending_here + a[i] 
+
+This approach is written below.
+
+*/
+int soln3(int a[],int n)
+{
+int ans = 0,max_ending_here = 0;
+
+for(int i=0;i<n;i++)
+{
+if(max_ending_here + a[i] < 0):
+    max_ending_here = 0
+else:
+    max_ending_here += a[i];
+ans = max(ans,max_ending_here)
+}
+return ans;  
+}
+/*
+All 3 approaches are correct and similar, they only have minor differences.
+*/
