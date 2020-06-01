@@ -1,4 +1,7 @@
-Range Minimum Query -->LCA on Cartesian Tree --> Farach Colton's +- RMQ algotihm. 
+Range Minimum Query -->LCA on Cartesian Tree --> Farach Colton's +- RMQ algorithm. 
+https://codeforces.com/blog/entry/15149
+https://cp-algorithms.com/graph/rmq_linear.html#toc-tgt-0
+https://cp-algorithms.com/graph/lca_farachcoltonbender.html
 
 #include <vector>
 template<typename T>
