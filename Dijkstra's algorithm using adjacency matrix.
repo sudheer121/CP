@@ -1,0 +1,25 @@
+// Dijkstra's algotihm C++ using adjacency matrix; 
+// Only non-negative edge weights are allowed
+/*
+We create a set vis[], vertices whose shortest path have been discovered will be included 
+this set.We will not visit these vertices again.
+
+Requirements:
+Take input in a 2D matrix g[][].
+1D matrix dis[] to store distances from source.
+1D boolean matrix vis[] representing the visited vertices set. 
+
+Steps:
+1)  Set dis[] array to INF, vis[] array to 0.
+Pick the source, dis[src] = 0, vis[src] = 1.
+
+2) (n-1) iterations: 
+        Pick the vertex at shortest distance(using dis[] array) which is yet not included
+        in vis[] set.
+        Put that vertex in vis[] set.
+        Update all its neighbours distances.
+
+*/
+#include<bits/stdc++.h>
+using namespace std;
+const int maxn = 2e5 + 10;
