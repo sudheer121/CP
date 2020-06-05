@@ -3,11 +3,14 @@
 /*
 We create a set vis[], vertices whose shortest path have been discovered will be included 
 this set.We will not visit these vertices again.
+vis[] set is also called shortest path set.
 
 Requirements:
 Take input in a 2D matrix g[][].
 1D matrix dis[] to store distances from source.
 1D boolean matrix vis[] representing the visited vertices set. 
+
+Whenever I say, put vertex u in vis[] set, it means set vis[u] = 1. 
 
 Steps:
 1)  Set dis[] array to INF, vis[] array to 0.
