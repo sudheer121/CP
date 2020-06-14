@@ -1,9 +1,16 @@
+/*
+IMP BEFORE USE : the id of root node is 0 be default and adjacency list is vector of vectors. 
+If your root id is 1, then push a redundant vector in adj first i.e adj[0];  
+*/
+
 // First do Euler tour on tree 
 // Then perform range minimum query on heights in Euler array, solving queries using segment tree.
 // https://cp-algorithms.com/graph/lca.html
 
+
 struct LCA {
-    vector<int> height, euler, first, segtree;
+    //we can get parent also 
+    vector<int> height, euler, first, segtree, par;
     vector<bool> visited;
     int n;
 
@@ -11,6 +18,8 @@ struct LCA {
         n = adj.size();
         height.resize(n);
         first.resize(n);
+        par.resize(n); 
+        par[root] = -1; 
         euler.reserve(n * 2);
         visited.assign(n, false);
         dfs(adj, root);
@@ -26,6 +35,7 @@ struct LCA {
         euler.push_back(node);
         for (auto to : adj[node]) {
             if (!visited[to]) {
+                par[to] = node; 
                 dfs(adj, to, h + 1);
                 euler.push_back(node);
             }
@@ -43,25 +53,3 @@ struct LCA {
             segtree[node] = (height[l] < height[r]) ? l : r;
         }
     }
-
-    int query(int node, int b, int e, int L, int R) {
-        if (b > R || e < L)
-            return -1;
-        if (b >= L && e <= R)
-            return segtree[node];
-        int mid = (b + e) >> 1;
-
-        int left = query(node << 1, b, mid, L, R);
-        int right = query(node << 1 | 1, mid + 1, e, L, R);
-        if (left == -1) return right;
-        if (right == -1) return left;
-        return height[left] < height[right] ? left : right;
-    }
-
-    int lca(int u, int v) {
-        int left = first[u], right = first[v];
-        if (left > right)
-            swap(left, right);
-        return query(1, 0, euler.size() - 1, left, right);
-    }
-};
