@@ -7,7 +7,7 @@ ll lpf[max] = {0};
 void lpfactor(ll n)//least prime factors of all till n 
 {   //using Sieve we are storing the corresponding lpf for every composite encountered 
     lpf[1] = 1;
-    for(int i=2;i<=n;i++)
+    for(int i=2;i*i<=n;i++)
     {
         if( lpf[i]==0 )// means i is prime
         {
