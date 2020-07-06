@@ -20,11 +20,11 @@ bool isCyclic(int k) //dfs
     return false;
 }
  
-bool checkCyclic()
+bool checkCyclic() // call this function in main() 
 {
     memset(visited, 0, sizeof(visited));
     memset(recStack, 0, sizeof(recStack));
-    for(int i=1;i<=n;i++)
+    for(int i=1;i<=n;i++) // need to do this for disconnected graphs
     {
         if(isCyclic(i))
             return true;
