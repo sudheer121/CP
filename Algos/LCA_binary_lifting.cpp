@@ -48,3 +48,9 @@ void preprocess(int root) {
     up.assign(n, vector<int>(l + 1));
     dfs(root, root);
 }
+/*
+===============================================================================================================================================================================
+Explanation of for loop inside lca() function.
+We start climbing up from one side of 2 vertices,eg:u until  we reach the lca.
+Imagine the distance of u from lca is a binary number.eg:  
+*/
