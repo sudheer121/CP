@@ -49,18 +49,14 @@ int main()
         v.pb(temp); 
     }
     sort(v.begin(),v.end(),cmp);
-    int lptr = -1, rptr = -1; 
+    int lptr = v[0].l, rptr = v[0].l-1; 
     fo(i,0,t)
     {
         int l = v[i].l;
         int r = v[i].r; 
         while(rptr < r){ add(++rptr); }
         while(rptr > r){ rem(rptr--); }
-        while(lptr < l)
-        {
-            if(lptr != -1){ rem(lptr); } 
-            lptr++; 
-        }
+        while(lptr < l){ rem(lptr++); } 
         while(lptr > l){ add(--lptr); }
         ansf[v[i].i] = ans; 
     }
