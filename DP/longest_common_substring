@@ -1,0 +1,56 @@
+https://repl.it/@SudheerTripathi/longestcommonsubstring
+#include <bits/stdc++.h>
+using namespace std;
+string s1,s2; 
+int n,m; 
+
+//dp[i][j] = longest common suffix ending 
+// with  ith letter in s1 and jth in s2 
+
+int dp[100][100];
+pair<int,int> p; // track lcs indices; 
+int lcs()
+{ int globalans = 0; 
+  for(int i=1;i<=n;i++)
+  {
+    for(int j=1;j<=m;j++)
+    {
+      if(s1[i-1] == s2[j-1])
+      {
+        dp[i][j] = 1 + dp[i-1][j-1]; 
+      }
+      else
+      {
+        dp[i][j] = 0; 
+      }
+      if(dp[i][j] > globalans)
+      {
+        globalans = dp[i][j];
+        p.first = i - 1; 
+        p.second = j - 1; 
+      } 
+    }
+  }
+  return globalans; 
+}
+
+string printlcs()
+{
+  int sz = lcs(); 
+  string s = ""; 
+  for(int i=0;i<sz;i++)
+  {
+    s.push_back(s1[p.first - i]); 
+  }
+  reverse(s.begin(),s.end()); 
+  return s; 
+}
+
+int main()
+{
+  cin>>s1>>s2; 
+  n = s1.size();
+  m = s2.size();
+  cout<<lcs()<<endl; 
+  cout<<printlcs()<<endl; 
+}
