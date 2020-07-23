@@ -1,25 +1,26 @@
 //https://algorithmsandme.com/longest-increasing-subsequence-in-onlogn/
 //https://leetcode.com/problems/longest-increasing-subsequence/solution/
 //=====================================================================================================================================
-//O(N*N) solution
+//O(N*N) solution(Dynamic Programming)
 
-int ans=1;
-int dp[maxn];//dp[i] stores the length of lis containing a[i]
-void lis()
-{
-dp[1] = 1;
-for(int i=2;i<n;i++)
-{ a[i] = INT_MIN;
-  for(int j=i-1;j>0;j--)
-  {
-    if(a[j]<a[i])
+//dp[i] gives lis ending at index i. 
+int lis()
+{ 
+  int globalans = 0; 
+  for(int i=0; i<n; i++)
+  { 
+    dp[i] = 1; 
+    for(int j=0; j<i; j++)
     {
-  dp[i] = max(a[i],dp[j]+1);
-  if(dp[i]>ans) ans = dp[i];
+      if(a[j] < a[i])
+      {
+        dp[i] = max(dp[i],dp[j]+1); 
+      }
     }
+    globalans = max(globalans,dp[i]); 
   }
+  return globalans; 
 }
-  
 
 //===================================================================================================================================  
 //O(NlogN) solution
