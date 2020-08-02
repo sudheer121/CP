@@ -1,0 +1,28 @@
+//union find algorithm (not optimized)
+#include <iostream>
+using namespace std;
+//remember arr[a] is parent of a
+int unin(int arr[10],int x,int y)
+{   while(arr[x]!=x){x=arr[x];}
+    while(arr[y]!=y){y=arr[y];}
+    arr[x]=arr[y];
+    return 0;
+}
+bool find(int arr[10],int x,int y)//tells whether a and b are connected
+{   while(arr[x]!=x){x=arr[x];}
+    while(arr[y]!=y){y=arr[y];}
+    if(arr[x]==arr[y]){return 1;}
+    return 0;
+}
+int main()
+{
+   int a[10];
+  for(int i=0;i<10;i++) { a[i]=i; }
+  unin(a,4,3);
+  unin(a,5,4);
+  unin(a,8,7);
+  unin(a,7,5);
+  for(int i=0;i<10;i++){cout<<a[i];}
+  cout<<" "<<find(a,8,7);
+  return 0;
+}
