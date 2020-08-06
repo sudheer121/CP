@@ -1,0 +1,6 @@
+In digit dp we start from msb of a number and try to explore all numbers <= max_number. 
+If the prefix explored so far is equal to prefix of max_number then we are on the edge ( in recursion we mark it as f = 0).
+At any instant if we take a digit smaller than corresponding digit in max_number, we pass f = 1. Hence in recursion function if f is passed 1, means prefix is already less, so
+now current digit can be anything from 1 to 9. 
+If we closesly see recusive function, we will know states can be visted again and again, hence we memoise it.
+Basically in recursive function of digit dp we explore all the numbers lesser than max_number and working is like a trie. 
