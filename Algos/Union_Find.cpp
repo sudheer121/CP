@@ -1,3 +1,5 @@
+//https://cp-algorithms.com/data_structures/disjoint_set_union.html
+
 void make_set(int v) {
     parent[v] = v;
 }
