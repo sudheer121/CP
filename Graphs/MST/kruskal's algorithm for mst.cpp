@@ -1,4 +1,4 @@
-//Kruksal's algorithm to find the minimum spanning tree
+//Kruskal's algorithm to find the minimum spanning tree
 #include<bits/stdc++.h>
 using namespace std;
 #define pb push_back
