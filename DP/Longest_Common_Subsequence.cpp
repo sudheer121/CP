@@ -1,7 +1,7 @@
 // Longest Common Subsequence 
 // Atcoder : https://atcoder.jp/contests/dp/submissions/16999394
 // Learning : don't make silly mistakes
-
+//only length : https://leetcode.com/problems/longest-common-subsequence/submissions/  
 #include<bits/stdc++.h>
 using namespace std;
 string s1,s2;
