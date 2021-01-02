@@ -1,3 +1,10 @@
+/*  
+THEORY : 
+Order of vertices such that for every directed edge u->v in graph, u comes before v in the ordering. 
+Works only on DAG -> makes sense 
+Algo : You basically do DFS and print the vertices in reverse. This is done by pushing vertices on stack while returning back from a dfs branch ending. 
+Then just read the stack upsidedown. 
+*/
 int n; // number of vertices
 vector<vector<int>> adj; // adjacency list of graph
 vector<bool> visited;
