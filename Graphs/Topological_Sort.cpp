@@ -33,6 +33,7 @@ void topological_sort() {
 int rs[n], vis[n]; // rs -> recursion stack , vis -> visited vertex 
 vi g[n]; 
 bool f; // f = 1 means cyclic graph 
+vi st; // stack 
 
 void dfs(int u) { 
     rs[u] = 1; 
@@ -51,4 +52,5 @@ void ts() {
              dfs(i); 
         } 
     }
+    reverse(st.begin(), st.end()) // answer 
 }
