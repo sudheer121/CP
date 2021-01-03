@@ -32,6 +32,7 @@ void topological_sort() {
 // ======================================= MY ALGO ==========================================================
 int rs[n], vis[n]; // rs -> recursion stack , vis -> visited vertex 
 vi g[n]; 
+bool f; // f = 1 means cyclic graph 
 
 void dfs(int u) { 
     rs[u] = 1; 
