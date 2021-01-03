@@ -5,6 +5,7 @@ Works only on DAG -> makes sense
 Algo : You basically do DFS and print the vertices in reverse. This is done by pushing vertices on stack while returning back from a dfs branch ending. 
 Then just read the stack upsidedown. 
 */
+// ======================================= CP ALGO ==========================================================
 int n; // number of vertices
 vector<vector<int>> adj; // adjacency list of graph
 vector<bool> visited;
@@ -27,4 +28,26 @@ void topological_sort() {
             dfs(i);
     }
     reverse(ans.begin(), ans.end());
+}
+// ======================================= MY ALGO ==========================================================
+int rs[n], vis[n]; // rs -> recursion stack , vis -> visited vertex 
+vi g[n]; 
+
+void dfs(int u) { 
+    rs[u] = 1; 
+    vis[u] = 1; 
+    for(int v:g[u]){ 
+        if(rs[v]) { f = 1; return; }
+        if(!vis[v]) dfs(v); 
+    }
+    rs[u] = 0; 
+    st.pb(u); 
+}
+void ts() { 
+    int i; 
+    fo(i,0,26){ 
+        if(!vis[i] && g[i].size()){ 
+             dfs(i); 
+        } 
+    }
 }
