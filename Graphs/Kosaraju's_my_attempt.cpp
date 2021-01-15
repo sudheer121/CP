@@ -1,5 +1,8 @@
 // Suppose the graph is undirected and connected then the whole graph is a SCC, but if graph is directed then we need Kosaraju's algo for finding each SCC
+/*
+In a strongly connected component, every vertex is reachable from every other vertex. 
 
+*/
 #include<bits/stdc++.h>
 using namespace std;
 #define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
